@@ -5,22 +5,24 @@
             :is="getPage.basket" 
             :decoration="getPage.decoration"
             class="basket">
-                <div class="content">
-                    <component 
-                        v-for="(comp, index) in getPage.comp"
-                        :key="index"
-                        v-bind="comp"
-                        :is="comp.id" 
-                        :title_1="comp.title_1" 
-                        :title_2="comp.title_2" 
-                        :msg_1="comp.msg_1"
-                        :msg_2="comp.msg_2"
-                        :backlog_list="comp.backlog_list"
-                        @click.prevent="goToPage(0)"
-                        >
-                    </component>
-                </div>
-            </component>
+            <div class="content">
+                    <keep-alive>
+                        <component 
+                            v-for="(comp, index) in getPage.comp"
+                            :key="index"
+                            v-bind="comp"
+                            :is="comp.id" 
+                            :title_1="comp.title_1" 
+                            :title_2="comp.title_2" 
+                            :msg_1="comp.msg_1"
+                            :msg_2="comp.msg_2"
+                            :backlog_list="comp.backlog_list"
+                            @press="findId"
+                            >
+                        </component>
+                    </keep-alive>
+                    </div>
+                </component>            
         </article>
     </div>
 </template>
@@ -33,18 +35,14 @@ import nav_btn from "@c/nav_btn.vue"
 import {ref, defineAsyncComponent, computed, onMounted} from 'vue'
 const getPage=computed(()=>{
     return pages[page.value]
-})
-const goToPage=(id)=>{
-    page.value++
-    if (page.value>6) page.value=0
-    return page
 }
+)
 const page=ref(0)
-// const pid=ref(0)
-// onMounted(() => {
-//     pid.value=localStorage.getItem("pageNum")
-//     return pid
-// })
+const findId=()=>{ 
+    page.value++;
+    if(page.value>5) page.value=0
+    return page
+} 
 const pages =[
     {
         id:1,

@@ -1,5 +1,5 @@
 <template>
-    <div class="nav_btn">
+    <div class="nav_btn" @click="press">
         <button>
             {{title_1}}
         </button>
@@ -7,17 +7,14 @@
 </template>
 <script setup>
     import {ref} from 'vue'
+    const emits = defineEmits(["press"])
     const props = defineProps({
         title_1:String,
     })
-    // const pid=ref(0)
-    // const goNext=()=>{
-    //     pid.value=pid.value+1;
-    //     if(pid.value>6) return pid.value=0
-    //     localStorage.setItem('pageNum',pid.value)
-    //     // const page=localStorage.getItem("pageNum")
-    //     // console.log(page)
-    // }
+    const pid=ref(0)
+    const press=()=>{
+        emits("press")
+    }
 </script>
 <style scoped lang="scss">
     .nav_btn {

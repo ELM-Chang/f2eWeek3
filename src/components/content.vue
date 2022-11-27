@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="nav_btn">
-                <nav_btn :title_1="title_2" @click.prevent="press"></nav_btn>
+                <nav_btn :title_1="title_2" @press="connect"></nav_btn>
             </div>
         </section>
     </div>
@@ -21,7 +21,7 @@ const props = defineProps({
     msg_1:String,
     });
 const emits = defineEmits(["press"])
-const press=()=>{
+const connect=()=>{
     emits("press")
 }
 </script>

@@ -15,15 +15,18 @@
     </div>
 </template>
 <script setup>
-    // import decoration_4 from "@c/decoration_4.vue"
-    import {ref, defineAsyncComponent, onMounted} from 'vue'
+    import decoration_1 from "@c/decoration_1.vue"
+    import decoration_2 from "@c/decoration_2.vue"
+    import decoration_3 from "@c/decoration_3.vue"
+    import decoration_4 from "@c/decoration_4.vue"
+    import {ref, defineAsyncComponent, onMounted, markRaw} from 'vue'
     const props = defineProps({
     decoration:String
     });
     onMounted(()=>{
-        deco.value=decoList[props.decoration]
+        deco.value=markRaw(decoList[props.decoration])
     })
-    const deco=ref({})
+    const deco=ref()
     const decoList={
         d1:defineAsyncComponent(()=>import("@/components/decoration_1.vue")),
         d2:defineAsyncComponent(()=>import("@/components/decoration_2.vue")),
