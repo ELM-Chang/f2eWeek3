@@ -4,7 +4,7 @@ import {resolve} from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base:'/2022f2eWeek3/',
+  base:'/f2eWeek3/',
   plugins: [vue()],
   resolve:{
     alias:{
